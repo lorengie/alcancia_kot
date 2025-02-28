@@ -14,17 +14,12 @@ fun main() {
     var moneda200=200
     var moneda500=500
     var cantidad20=0
-    var catidad50=0
+    var cantidad50=0
     var cantidad100=0
     var cantidad200=0
     var cantidad500=0
     var total=0
 
-    var canti20=0
-    var canti50=0
-    var canti100=0
-    var canti200=0
-    var canti500=0
 
     do {
 
@@ -32,7 +27,9 @@ fun main() {
             """ingrese una opcion
         1 ingresar monedas
         2 visualizar monedas
-        3 sacar el dinero 
+        3 total ahorrado 
+        4 sacar dinero
+        5 salir
         """
         )
         val menu = readln().toInt()
@@ -49,42 +46,59 @@ fun main() {
                     
                     """)
                 val valor_moneda= readln().toInt()
+                println("ingrese la cantidad (=")
+                val cantidad = readln().toInt()
                 when(valor_moneda){
                     1-> {
                         println("ingrese la cantidad de 20")
-                        var canti20= readln().toInt()
-                        cantidad20= cantidad20+canti20
-                        //var total20=(canti20*20)
+                        cantidad20 += cantidad
+
 
                     }
                     2-> {
                         println("ingrese la cantidad de 50")
-                        var canti50= readln().toInt()
+                        cantidad50 += cantidad
 
                     }
                     3-> {
                         println("ingrese la cantidad de 100")
-                        var canti100= readln().toInt()
+                        cantidad100+= cantidad
                     }
                     4-> {
                         println("ingrese la cantidad de 200")
-                        var canti200= readln().toInt()
+                        cantidad200+= cantidad
                     }
                     5-> {
                         println("ingrese la cantidad de 500")
-                        var canti500= readln().toInt()
+                        cantidad500+= cantidad
                     }
+                    else -> println("opcion no valida")
                 }
             }
             2-> {
-                var cantidad20= (canti20*moneda20)
-                println("tiene"+cantidad20)
-                println("tiene"+canti20)
+                println("la cantidad de monedas ingresadas es: ")
+                println("monedas de 20: $cantidad20")
+                println("monedas de 50: $cantidad50")
+                println("monedas de 100: $cantidad100")
+                println("monedas de 200: $cantidad200")
+                println("monedas de 500 $cantidad500")
             }
-            3 -> {print("")
-            }
+            3 -> {
 
+                total=(cantidad20*moneda20)+(cantidad50*moneda50)+(cantidad100*moneda100)+(cantidad200*moneda200)+(cantidad500*moneda500)
+                println("El total ahorrado es de: $total")
+            }
+            4->{
+                println("se ha roto la alcancia 💵💵")
+                cantidad20=0
+                cantidad50=0
+                cantidad100=0
+                cantidad200=0
+                cantidad500=0
+                total=0
+            }
+            5-> println("Saliendo del programa ")
             else -> println("ingrese una opcion valida")
         }
-    }while (menu!=4)
+    }while (menu!=5)
 }
